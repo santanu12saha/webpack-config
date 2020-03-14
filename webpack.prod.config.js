@@ -71,6 +71,17 @@ module.exports = {
     ],
     optimization: {
         minimize: true,
-        minimizer: [new UglifyJsPlugin()],
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                uglifyOptions: {
+                  compress: true,
+                  ecma: 6,
+                  mangle: true
+                },
+                sourceMap: true
+              })
+        ]
     }
 };
